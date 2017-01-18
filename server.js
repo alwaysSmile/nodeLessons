@@ -17,6 +17,22 @@
 //Example2
 //**********
 //modul.parent
+
+//******
+//Модуль server.js будет запускать этот функционал, только
+//если он запущен явно, то есть с помощью командной строки
+
+//var user = require('./user');
+//var vasya = new user.User("Вася");
+//var petya = new user.User("Петя");
+//
+//vasya.hello(petya);
+//******
+
+//******
+//Если какой-то другой модуль подключил наш файл server.js,
+//то нужно его экспортировать
+
 var user = require('./user');
 
 function run() {
@@ -25,13 +41,17 @@ function run() {
 
     vasya.hello(petya);
 }
+
+
 //Если какой-то другой модуль подключил наш файл server.js,
 //то нужно его экспортировать
-if(module.parent){
+if (module.parent) {
+    console.log('другой модуль подключил наш файл server.js');
     exports.run = run;
 }
 //Если нет, то сервер запущен сам по себе
 else {
+    console.log('сервер запущен сам по себе');
     run();
 }
 //**********
