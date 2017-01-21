@@ -50,8 +50,10 @@
 
 //Example3
 //**********
-var db = require('../db');
 //Загрузить из базы
+var db = require('db');
+//Создаём log для того, чтобы узнать название текущуго модуля и результат
+var log = require('logger')(module);//передаём текущий модуль(его параметры)
 
 
 function User(name) {
@@ -60,7 +62,7 @@ function User(name) {
 
 
 User.prototype.hello = function (who) {
-    console.log(db.getPhrase("Hello") + ", " + who.name);
+    log(db.getPhrase("Hello") + ", " + who.name);
 };
 
 //******

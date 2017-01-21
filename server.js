@@ -58,8 +58,20 @@
 //Example3
 //**********
 
-var db = require('./db');
+//******
+//Путь к базе данных var db = require('./db');
+//В командной строке для запуска server.js пишу => node server.js,
+//но, если проект расширяется, то нам нужно для всех файлов,
+//подключаемых к базе данных использовать один единый путь, т.е
+//var db = require('db');, чтобы его использовать в командной строке
+//для запуска server.js нужно =>
+//set NODE_PATH=. затем
+//node server.js
+//******
+var log = require('logger')(module);
+var db = require('db');
 db.connect();
+
 var User = require('./user');
 
 function run() {
@@ -67,7 +79,7 @@ function run() {
     var petya = new User("Петя");
 
     vasya.hello(petya);
-    console.log(db.getPhrase('Run successful'));
+    log(db.getPhrase('Run successful'));
 }
 if (module.parent) {
 
@@ -76,7 +88,7 @@ if (module.parent) {
     exports.run = run;
 }
 else {
-    console.log('сервер запущен сам по себе');
+    //console.log('сервер запущен сам по себе');
     run();
 }
 
