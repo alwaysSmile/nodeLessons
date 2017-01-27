@@ -68,6 +68,7 @@
 //set NODE_PATH=. затем
 //node server.js
 //******
+//Передаём текущий модуль, т.е подключаю модуль и передаю параметры
 var log = require('logger')(module);
 var db = require('db');
 db.connect();

@@ -62,6 +62,7 @@ function User(name) {
 
 
 User.prototype.hello = function (who) {
+    //Выводится строка и перед ней название модуля который её вызывает
     log(db.getPhrase("Hello") + ", " + who.name);
 };
 
